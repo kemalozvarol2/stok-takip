@@ -3,83 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function create($id)
     {
-        //
+        $cat_data = new Category();
+        $cat_data = $cat_data->all();
+        $selected_category = new Category();
+        $selected_category = $selected_category->whereId($id)->first();
+        return view('create_product',compact(['cat_data','selected_category']));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create_product(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        //
+        $product = new Product();
+        $product->category_id = $id;
+        $product->name = $request['name'];
+        $product->stock = $request['stock'];
+        $product->barcode = $request['barcode'];
+        $product->price_buying = $request['price_buying'];
+        $product->price_selling = $request['price_selling'];
+        $product->critical_stock_level = $request['critical_stock_level'];
+        $product->save();
+        $cat_data = new Category();
+        $cat_data = $cat_data->all();
+        $selected_category = new Category();
+        $selected_category = $selected_category->whereId($id)->first();
+        $success = $request['name'];
+        return view('create_product',compact(['cat_data','selected_category','success']));
     }
 }

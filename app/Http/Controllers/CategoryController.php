@@ -3,83 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function show_category($id)
     {
-        //
+        $selected_category = new Category();
+        $selected_category = $selected_category->whereId($id)->first();
+        $selected_products = new Product();
+        $selected_products = $selected_products->whereCategoryId($id)->get()->all();
+        $cat_data = new Category();
+        $cat_data = $cat_data->all();
+        return view('show_category',compact(['selected_category','selected_products','cat_data']));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $cat_data = new Category();
+        $cat_data = $cat_data->all();
+        return view('create_category',compact('cat_data'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create_category(Request $request)
     {
-        //
+        $cat_data = new Category();
+        $cat_data->name = $request['category_name'];
+        $cat_data->save();
+        $cat_data = new Category();
+        $cat_data = $cat_data->all();
+        return view('create_category',compact('cat_data'));
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
+    public function delete_category($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
-    {
-        //
+        $category = new Category();
+        $category->whereId($id)->first()->delete();
+        $cat_data = new Category();
+        $cat_data = $cat_data->all();
+        return view('create_category', compact('cat_data'));
     }
 }
