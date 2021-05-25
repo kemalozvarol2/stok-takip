@@ -34,4 +34,9 @@ class ProductController extends Controller
         $success = $request['name'];
         return view('create_product',compact(['cat_data','selected_category','success']));
     }
+    /*
+     * @todo : ürün silmeyi ekle (tablodan)
+     * @todo : kategori silinirken emin misin diye sorsun, bide kategori silinirken ürünlerini de silsin
+     *
+     * */
 }
