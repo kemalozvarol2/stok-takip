@@ -40,4 +40,10 @@ class ProductController extends Controller
         $product->whereId($id)->first()->delete();
         return back();
     }
+
+    public function show_critical(){
+        $products = new Product();
+        $products = $products::whereRaw('stock < critical_stock_level')->get();
+        return view('show_critical',compact('products'));
+    }
 }

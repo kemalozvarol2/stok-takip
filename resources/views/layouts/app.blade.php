@@ -58,6 +58,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="{{route('home')}}" class="dropdown-item">Ana Sayfa</a>
+                                    <a href="{{route('show_critical')}}" class="dropdown-item">Azalan Ürünler</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
