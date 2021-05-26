@@ -37,8 +37,10 @@ class CategoryController extends Controller
     {
         $category = new Category();
         $category->whereId($id)->first()->delete();
+        $product = new Product();
+        $product->where('category_id', $id)->delete();
         $cat_data = new Category();
         $cat_data = $cat_data->all();
-        return view('create_category', compact('cat_data'));
+        return back();
     }
 }

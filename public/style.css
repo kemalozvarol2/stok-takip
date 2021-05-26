@@ -1,0 +1,13 @@
+.list-group-item a{
+    color:inherit;
+}
+.list-group-item{
+    transition: color, background-color .3s ease-in-out;
+}
+.list-group-item:hover{
+    background: #333;
+    color:#bbb;
+}
+.list-group-item:hover *{
+    color:#bbb;
+}

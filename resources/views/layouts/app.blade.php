@@ -16,6 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -75,7 +76,30 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 sidebar">
+                        <ul class="list-group">
+                            <li class="list-group-item active">Kategoriler</li>
+                            @if(count($cat_data) > 0)
+                                @foreach($cat_data as $cat)
+                                    <li class="list-group-item">
+                                        <a href="/category/{{$cat->id}}">{{$cat->name}}</a>
+                                        <a href="/delete/category/{{$cat->id}}" class="text-danger float-right" onclick="return confirm('Kategoriyi silmek istediğinizden emin misiniz?\nKategorinin içindeki ürünler de silinecektir.')">Sil</a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="list-group-item">Kategori Yok</li>
+                            @endif
+                            <li class="list-group-item"><a href="{{route('create_category')}}">+ Kategori Ekle</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-8 content">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>
