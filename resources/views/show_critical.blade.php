@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
     @if(isset($products))
-        @foreach($products as $product)
-
             <table class="table table-striped table-dark">
                 <thead>
                 <tr>
@@ -22,7 +20,7 @@
 
                         <tr>
                             <th scope="row">{{$product->id}}</th>
-                            <td>{{\App\Category::whereId($product->id)->first()->name}}</td>
+                            <td>{{\App\Category::whereId($product->category_id)->first()->name}}</td>
                             <td>{{$product->name}}</td>
                             <td>{{$product->stock}}</td>
                             <td>{{$product->price_buying}}</td>
@@ -43,6 +41,5 @@
                 @endif
                 </tbody>
             </table>
-        @endforeach
     @endif
 @endsection

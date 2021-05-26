@@ -46,4 +46,17 @@ class ProductController extends Controller
         $products = $products::whereRaw('stock < critical_stock_level')->get();
         return view('show_critical',compact('products'));
     }
+
+    public function show_all_products(){
+        $products = new Product();
+        $products = $products::all();
+        return view('all_products',compact('products'));
+    }
+
+    /*
+     * @todo : single ürün editleme sayfası yap linkini tablolara koy.
+     *
+     * */
+
+
 }

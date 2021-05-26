@@ -35,3 +35,4 @@ Route::get('/delete/product/{id}', 'ProductController@delete_product')->name('de
 # Sayfalar Routing
 
 Route::get('/critical_stock', 'ProductController@show_critical')->name('show_critical');
+Route::get('/all_products', 'ProductController@show_all_products')->name('show_all_products');
