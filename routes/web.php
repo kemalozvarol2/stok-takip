@@ -30,3 +30,4 @@ Route::get('/delete/category/{id}', 'CategoryController@delete_category')->name(
 
 Route::get('/product/add/{id}', 'ProductController@create')->name('create_product');
 Route::post('/product/add/{id}', 'ProductController@create_product')->name('create_product');
+Route::get('/delete/product/{id}', 'ProductController@delete_product')->name('delete_product');

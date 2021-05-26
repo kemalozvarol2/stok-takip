@@ -8,17 +8,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 
     <!-- Styles -->
+    <script src="/assets/bootstrap.js"></script>
+    <script src="/assets/jquery.js"></script>
+    <script src="/assets/popper.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 </head>
@@ -79,6 +79,7 @@
 
             <div class="container">
                 <div class="row">
+                    @if(isset($cat_data))
                     <div class="col-4 sidebar">
                         <ul class="list-group">
                             <li class="list-group-item active">Kategoriler</li>
@@ -96,6 +97,10 @@
                         </ul>
                     </div>
                     <div class="col-8 content">
+                    @else
+                        <div class="col-12 content">
+                    @endif
+
                         @yield('content')
                     </div>
                 </div>

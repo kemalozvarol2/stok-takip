@@ -11,6 +11,7 @@
                         <th scope="col">Stok Adedi</th>
                         <th scope="col">Alış Fiyatı</th>
                         <th scope="col">Satış Fiyatı</th>
+                        <th scope="col" class="text-center">Kaydı Sil</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,7 @@
                                 </td>
                                 <td>{{$product->price_buying}}</td>
                                 <td>{{$product->price_selling}}</td>
+                                <td class="text-center"><a href="/delete/product/{{$product->id}}" class="btn btn-danger" onclick="return confirm('Kaydı silmek istediğinizden emin misiniz?')">Sil</a></td>
                             </tr>
                         @endforeach
                     @else
