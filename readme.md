@@ -6,6 +6,8 @@
 
 ![image](https://user-images.githubusercontent.com/10588005/128151380-96d11562-9353-4beb-866e-fa25d24c3f42.png)
 
+![image](https://user-images.githubusercontent.com/10588005/128152016-b3473d13-b46b-4671-8466-a3d21ff7d10a.png)
+
 
 Özellikler;
 - Üyelik
