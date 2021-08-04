@@ -21,5 +21,6 @@ Eklenecekler;
 - Üyelere kategorilere göre yetki verme
 - Ürün detaylarını düzenleme sayfası
 - Ürün satış sayfası
+- Tasarım düzenlemeleri
 
 Tamamlanma : ![70%](https://progress-bar.dev/70)
